@@ -1,0 +1,26 @@
+{
+  "productName": "ElectronReact",
+  "appId": "org.erb.ElectronReact",
+  "asar": true,
+  "asarUnpack": "**\\*.{node,dll}",
+  "files": [
+    "dist",
+    "node_modules",
+    "package.json"
+  ],
+  "afterSign": ".erb/scripts/notarize.js",
+  "win": {
+    "target": [
+      "nsis",
+      "portable"
+    ]
+  },
+  "directories": {
+    "app": "release/app",
+    "buildResources": "assets",
+    "output": "release/build"
+  },
+  "extraResources": [
+    "./assets/**"
+  ]
+}
