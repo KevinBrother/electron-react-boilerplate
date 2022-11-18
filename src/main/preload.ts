@@ -20,3 +20,14 @@ contextBridge.exposeInMainWorld('electron', {
     },
   },
 });
+
+contextBridge.exposeInMainWorld('versions', {
+  node: () => process.versions.node,
+  chrome: () => process.versions.chrome,
+  electron: () => process.versions.electron,
+});
+
+contextBridge.exposeInMainWorld('process', {
+  pid: () => process.pid,
+  ppid: () => process.ppid,
+});

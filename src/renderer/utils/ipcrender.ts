@@ -12,3 +12,11 @@ export function getIpcExample() {
 export function setIpcPing() {
   window.electron.ipcRenderer.sendMessage('ipc-example', ['ping']);
 }
+
+export function getVersion() {
+  return window.versions;
+}
+
+export function getProcess() {
+  return window.process;
+}

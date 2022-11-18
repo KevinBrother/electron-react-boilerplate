@@ -12,6 +12,15 @@ declare global {
         once(channel: string, func: (...args: unknown[]) => void): void;
       };
     };
+    versions: {
+      node: () => string;
+      chrome: () => string;
+      electron: () => string;
+    };
+    process: {
+      pid: () => number;
+      ppid: () => number;
+    };
   }
 }
 

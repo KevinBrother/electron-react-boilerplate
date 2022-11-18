@@ -78,6 +78,7 @@ const createWindow = async () => {
     icon: getAssetPath('icon.png'),
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: true,
       webSecurity: false,
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
