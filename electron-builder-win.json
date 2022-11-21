@@ -1,6 +1,6 @@
 {
-  "productName": "ElectronReact",
-  "appId": "org.erb.ElectronReact",
+  "productName": "JTBankGreen",
+  "appId": "org.erb.JTBankGreen",
   "asar": true,
   "asarUnpack": "**\\*.{node,dll}",
   "files": [

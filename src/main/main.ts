@@ -12,9 +12,12 @@ import path from 'path';
 import { app, BrowserWindow, shell, ipcMain, globalShortcut } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
+import minimist from 'minimist';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import { SHORTCUTS, toggleDevTools } from './shortcut';
+
+const args = minimist(process.argv.slice(2));
 
 class AppUpdater {
   constructor() {
@@ -27,10 +30,8 @@ class AppUpdater {
 let mainWindow: BrowserWindow | null = null;
 
 ipcMain.on('ipc-example', async (event, arg) => {
-  const msgTemplate = (pingPong: string) =>
-    `IPC test: ${pingPong} ==== process ${process.pid}`;
-  console.log(msgTemplate(arg));
-  event.reply('ipc-example', msgTemplate(`pong ${process.argv.toString()}`));
+  const msgTemplate = `token=${args?.token}`;
+  event.reply('ipc-example', msgTemplate);
 });
 
 if (process.env.NODE_ENV === 'production') {
