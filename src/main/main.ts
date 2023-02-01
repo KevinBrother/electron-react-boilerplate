@@ -17,7 +17,7 @@ import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import { SHORTCUTS, toggleDevTools } from './shortcut';
 
-const args = minimist(process.argv.slice(2));
+const args = minimist(process.argv.slice(1));
 
 class AppUpdater {
   constructor() {
@@ -30,8 +30,21 @@ class AppUpdater {
 let mainWindow: BrowserWindow | null = null;
 
 ipcMain.on('ipc-example', async (event, arg) => {
-  const msgTemplate = `token=${args?.token}`;
+  const { argv } = process;
+  const msgTemplate = `
+  argv=${argv.toString()}
+  token=${args?.token}`;
   event.reply('ipc-example', msgTemplate);
+});
+
+ipcMain.handle('invoke-example', async (event, params) => {
+  console.log(
+    '%c [ params ]-41',
+    'font-size:13px; background:pink; color:#bf2c9f;',
+    event,
+    params
+  );
+  return { name: 'invoke-example', msg: 'good', params };
 });
 
 if (process.env.NODE_ENV === 'production') {

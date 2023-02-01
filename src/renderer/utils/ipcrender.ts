@@ -24,6 +24,10 @@ export function setIpcPing() {
   window.electron.ipcRenderer.sendMessage('ipc-example', ['ping']);
 }
 
+export function invokeExample() {
+  return window.electron.ipcRenderer.invoke('invoke-example', 'ping');
+}
+
 export function getVersion() {
   return window.versions;
 }

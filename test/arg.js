@@ -1,3 +1,6 @@
-const argv = require('minimist')(process.argv.slice(2));
+const minimist = require('minimist');
 
-console.log(argv);
+const { argv } = process;
+const resetArgv = minimist(argv.slice(2));
+
+console.log(argv, resetArgv.token);
